@@ -2,6 +2,8 @@
 
 namespace Geometry;
 
+use Geometry\Util\ISequence;
+
 class Shape
 {
 
@@ -12,9 +14,12 @@ class Shape
     protected $width;
     protected $length;
 
+    protected $sequenceGenerator;
 
-    public function __construct(int $width, int $length, string $name = null)
+
+    public function __construct(ISequence $sequenceGenerator, int $width, int $length, string $name = null)
     {
+        $this->sequenceGenerator = $sequenceGenerator;
         $this->setId();
         $this->setName($name);
         $this->setWidth($width);
@@ -38,7 +43,7 @@ class Shape
     public function setId($id = null)
     {
         if (is_null($id)) {
-            $id = microtime(true);
+            $id = $this->sequenceGenerator->nextId();
         }
 
         $this->id = $id;
