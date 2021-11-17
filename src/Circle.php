@@ -1,11 +1,6 @@
 <?php
 
 namespace Geometry;
-
-use ReflectionClass;
-
-require_once 'Shape.php';
-
 class Circle extends Shape {
 
     const TYPE = 3;

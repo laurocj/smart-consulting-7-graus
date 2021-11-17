@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-require_once './src/Shape.php';
-
 use Geometry\Shape;
 use PHPUnit\Framework\TestCase;
 

@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-require_once './src/Rectangle.php';
-
 use Geometry\Rectangle;
 use Geometry\Shape;
 use PHPUnit\Framework\TestCase;
