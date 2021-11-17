@@ -1,15 +1,18 @@
 <?php
 
 namespace Geometry;
+
+use Geometry\Util\ISequence;
+
 class Circle extends Shape {
 
     const TYPE = 3;
 
     protected $radius;
 
-    public function __construct($radius) {
+    public function __construct(ISequence $sequenceGenerator, $radius) {
         $this->radius = $radius;
-        parent::__construct($radius, $radius);
+        parent::__construct($sequenceGenerator, $radius, $radius);
     }
 
     /**

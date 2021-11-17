@@ -3,14 +3,23 @@
 declare(strict_types=1);
 
 use Geometry\Shape;
+use Geometry\Util\SequenceUuid;
 use PHPUnit\Framework\TestCase;
 
 final class ShapeTest extends TestCase
 {
+    private $sequenceGenerator;
+
+    protected function setUp(): void
+    {
+        $this->sequenceGenerator = new SequenceUuid();
+    }
+
+    
     public function testUniqueId(): void
     {
-        $shape1 = new Shape(20, 20);
-        $shape2 = new Shape(20, 20);
+        $shape1 = new Shape($this->sequenceGenerator, 20, 20);
+        $shape2 = new Shape($this->sequenceGenerator, 20, 20);
 
         $this->assertNotEquals(
             $shape1->getId(),
@@ -18,9 +27,10 @@ final class ShapeTest extends TestCase
         );
     }
 
+
     public function testHasAttribute(): void
     {
-        $shape = new Shape(20, 20);
+        $shape = new Shape($this->sequenceGenerator, 20, 20);
 
         $this->assertObjectHasAttribute(
             'id',
@@ -43,9 +53,10 @@ final class ShapeTest extends TestCase
         );
     }
 
+
     public function testCalculateArea(): void
     {
-        $shape = new Shape(20, 20);
+        $shape = new Shape($this->sequenceGenerator, 20, 20);
 
         $this->assertEquals(
             400,
@@ -53,9 +64,10 @@ final class ShapeTest extends TestCase
         );
     }
 
+
     public function testClone(): void
     {
-        $shape = new Shape(20, 20);
+        $shape = new Shape($this->sequenceGenerator, 20, 20);
         $shapeClone = $shape->clone();
 
         $this->assertInstanceOf(
