@@ -1,0 +1,27 @@
+# docker-compose.yml https://thephp.website/br/edicao/php-docker-setup-rapido/
+version: '3'
+services:
+  ## ADD COMPOSER
+  composer:
+    image: composer:2
+    environment: ## CACHE FOR LOCAL MACHINE, NOT ONLY IN CONTAINER
+      - COMPOSER_CACHE_DIR=/app/var/cache/composer
+    volumes:
+      - .:/app
+    restart: never
+  ## ADD PHP
+  php:
+    image: php:7.2-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+  ## ADD PHPUNIT
+  phpunit:
+    image: php:7.2-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    ## ALIAS FOR THE COMMAND PHPUNIT
+    entrypoint: vendor/bin/phpunit
