@@ -73,6 +73,9 @@ class Shape
      */
     private function setWidth(int $width)
     {
+        if ($width == 0) {
+            throw new \ArithmeticError("Width cannot be zero", 1);
+        }
         $this->width = $width;
     }
 
@@ -83,6 +86,9 @@ class Shape
      */
     private function setLength(int $length)
     {
+        if ($length == 0) {
+            throw new \ArithmeticError("Length cannot be zero", 1);
+        }
         $this->length = $length;
     }
 
