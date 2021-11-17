@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-require_once './src/Circle.php';
-
 use Geometry\Circle;
 use PHPUnit\Framework\TestCase;
 
