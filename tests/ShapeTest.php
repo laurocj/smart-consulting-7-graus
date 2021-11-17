@@ -15,6 +15,14 @@ final class ShapeTest extends TestCase
         $this->sequenceGenerator = new SequenceUuid();
     }
 
+
+    public function testCanNotCreateZero(): void
+    {
+        $this->expectException(ArithmeticError::class);
+
+        new Shape($this->sequenceGenerator, 0, 0);
+    }
+
     
     public function testUniqueId(): void
     {

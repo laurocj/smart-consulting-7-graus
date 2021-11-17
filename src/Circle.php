@@ -4,15 +4,25 @@ namespace Geometry;
 
 use Geometry\Util\ISequence;
 
-class Circle extends Shape {
+class Circle extends Shape
+{
 
     const TYPE = 3;
 
     protected $radius;
 
-    public function __construct(ISequence $sequenceGenerator, $radius) {
-        $this->radius = $radius;
+    public function __construct(ISequence $sequenceGenerator, int $radius)
+    {
+        $this->setRadius($radius);
         parent::__construct($sequenceGenerator, $radius, $radius);
+    }
+
+    private function setRadius(int $radius)
+    {
+        if ($radius == 0) {
+            throw new \ArithmeticError("Radius cannot be zero", 1);
+        }
+        $this->radius = $radius;
     }
 
     /**
@@ -22,8 +32,8 @@ class Circle extends Shape {
     public function calculateArea()
     {
         $area = pi() * ($this->radius * $this->radius);
-        
-        return number_format($area,2,'.','');
+
+        return number_format($area, 2, '.', '');
     }
 
     /**
@@ -37,5 +47,4 @@ class Circle extends Shape {
         unset($clone->length);
         return $clone;
     }
-
 }
