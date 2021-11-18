@@ -14,7 +14,7 @@ class Circle extends Shape
     public function __construct(ISequence $sequenceGenerator, int $radius)
     {
         $this->setRadius($radius);
-        parent::__construct($sequenceGenerator, $radius, $radius);
+        parent::__construct($sequenceGenerator, $radius * 2, $radius * 2);
     }
 
     private function setRadius(int $radius)
